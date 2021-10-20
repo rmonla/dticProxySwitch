@@ -7,6 +7,7 @@ clear;
 
 $logVERs = " => 
 
+	v2.6 => FXs: ejecutarRUTEOs() Trabajando....
 	v2.5 => FXs: cargaInterface() Optimiza código con parámetro BODY.
 	v2.4 => FXs: Crea la función getStrRED() que genera string para cargar en interfaces.
 	v2.3 => FXs: Crea la función cargaInterface que genera el archivo de configuración interfaces.conf

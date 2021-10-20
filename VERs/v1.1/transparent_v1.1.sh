@@ -11,39 +11,7 @@ echo -n "SELECCIONE UNA OPCIÓN [1 - 4] : "
 read opcion
 case $opcion in
 
-1)rm /etc/network/interfaces;
-echo 'source /etc/network/interfaces.d/*'>>/etc/network/interfaces;
-echo "auto lo">>/etc/network/interfaces;
-echo "iface lo inet loopback">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-
-echo "#Red Rectorado">>/etc/network/interfaces;
-echo "allow-hotplug eth0">>/etc/network/interfaces;
-echo "iface eth0 inet static">>/etc/network/interfaces;
-echo "address 192.168.8.9">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.8.255">>/etc/network/interfaces;
-echo "network 192.168.8.0">>/etc/network/interfaces;
-echo "gateway 192.168.8.86">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-
-echo "#Red 7">>/etc/network/interfaces;
-echo "allow-hotplug eth1">>/etc/network/interfaces;
-echo "iface eth1 inet static">>/etc/network/interfaces;
-echo "address 192.168.7.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.7.255">>/etc/network/interfaces;
-echo "network 192.168.7.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-
-echo "#Red 20">>/etc/network/interfaces;
-echo "allow-hotplug eth2">>/etc/network/interfaces;
-echo "iface eth2 inet static">>/etc/network/interfaces;
-echo "address 192.168.20.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.20.255">>/etc/network/interfaces;
-echo "network 192.168.20.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
+1)
 
 
 SQUID_SERVER="192.168.7.1";
@@ -173,37 +141,7 @@ echo "¡Listo!";;
 
 
 
-2)rm /etc/network/interfaces;
-echo 'source /etc/network/interfaces.d/*'>>/etc/network/interfaces;
-echo "auto lo">>/etc/network/interfaces;
-echo "iface lo inet loopback">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red Rectorado">>/etc/network/interfaces;
-echo "allow-hotplug eth0">>/etc/network/interfaces;
-echo "iface eth0 inet static">>/etc/network/interfaces;
-echo "address 192.168.11.4">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.11.255">>/etc/network/interfaces;
-echo "network 192.168.11.0">>/etc/network/interfaces;
-echo "gateway 192.168.11.1">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red 7">>/etc/network/interfaces;
-echo "allow-hotplug eth1">>/etc/network/interfaces;
-echo "iface eth1 inet static">>/etc/network/interfaces;
-echo "address 192.168.7.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.7.255">>/etc/network/interfaces;
-echo "network 192.168.7.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red 20">>/etc/network/interfaces;
-echo "allow-hotplug eth2">>/etc/network/interfaces;
-echo "iface eth2 inet static">>/etc/network/interfaces;
-echo "address 192.168.20.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.20.255">>/etc/network/interfaces;
-echo "network 192.168.20.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
+2)
 
 
 SQUID_SERVER="192.168.7.1";
@@ -301,37 +239,7 @@ service networking restart;
 echo "¡Listo!";;
 
 
-3)rm /etc/network/interfaces;
-echo 'source /etc/network/interfaces.d/*'>>/etc/network/interfaces;
-echo "auto lo">>/etc/network/interfaces;
-echo "iface lo inet loopback">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red Rectorado">>/etc/network/interfaces;
-echo "allow-hotplug eth0">>/etc/network/interfaces;
-echo "iface eth0 inet static">>/etc/network/interfaces;
-echo "address 190.114.205.30">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 190.114.205.255">>/etc/network/interfaces;
-echo "network 190.114.205.0">>/etc/network/interfaces;
-echo "gateway 190.114.205.1">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red 7">>/etc/network/interfaces;
-echo "allow-hotplug eth1">>/etc/network/interfaces;
-echo "iface eth1 inet static">>/etc/network/interfaces;
-echo "address 192.168.7.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.7.255">>/etc/network/interfaces;
-echo "network 192.168.7.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
-echo "#Red 20">>/etc/network/interfaces;
-echo "allow-hotplug eth2">>/etc/network/interfaces;
-echo "iface eth2 inet static">>/etc/network/interfaces;
-echo "address 192.168.20.1">>/etc/network/interfaces;
-echo "netmask 255.255.255.0">>/etc/network/interfaces;
-echo "broadcast 192.168.20.255">>/etc/network/interfaces;
-echo "network 192.168.20.0">>/etc/network/interfaces;
-echo "#|||||||||||||||||||">>/etc/network/interfaces;
+3)
 
 
 SQUID_SERVER="192.168.7.1";

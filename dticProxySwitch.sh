@@ -6,6 +6,58 @@ clear
 
 
 ######## «® FUNCIONES ®» ########
+ejecutarRUTEOs(){
+
+PROXY_SERVER="192.168.7.1";
+PROXY_PUERTO="3128";
+INTERFACE="eth0";
+RED_INTRANET="192.168.7.0/24";
+RED_PUBLICA="192.168.8.0/24"
+
+iptables -F;
+iptables -X;
+iptables -t nat -F;
+iptables -t nat -X;
+iptables -t mangle -F;
+iptables -t mangle -X;
+
+modprobe ip_conntrack;
+modprobe ip_conntrack_ftp;
+
+echo 1 > /proc/sys/net/ipv4/ip_forward;
+
+iptables -P INPUT DROP;
+iptables -P OUTPUT ACCEPT;
+iptables -A INPUT -i lo -j ACCEPT;
+iptables -A OUTPUT -o lo -j ACCEPT;
+
+iptables -A INPUT -i $INTERFACE -m state --state ESTABLISHED,RELATED -j ACCEPT;
+iptables -A INPUT -s $RED_INTRANET -m state --state ESTABLISHED,RELATED -j ACCEPT;
+iptables -A INPUT -s $RED_PUBLICA -m state --state ESTABLISHED,RELATED -j ACCEPT;
+
+iptables -t nat -A POSTROUTING -o $INTERFACE -j MASQUERADE;
+
+iptables -A FORWARD -s $RED_INTRANET -j ACCEPT;
+iptables -A INPUT -s $RED_INTRANET -j ACCEPT;
+iptables -A OUTPUT -s $RED_INTRANET -j ACCEPT;
+
+iptables -A FORWARD -s $RED_PUBLICA -j ACCEPT;
+iptables -A INPUT -s $RED_PUBLICA -j ACCEPT;
+iptables -A OUTPUT -s $RED_PUBLICA -j ACCEPT;
+
+iptables -t nat -A PREROUTING -i $INTERFACE -p tcp --dport 80 -j REDIRECT --to-port $PROXY_PUERTO;
+iptables -t nat -A PREROUTING -s $RED_INTRANET -p tcp --dport 80 -j DNAT --to $PROXY_SERVER:$PROXY_PUERTO;
+iptables -t nat -A PREROUTING -s $RED_PUBLICA -p tcp --dport 80 -j DNAT --to $PROXY_SERVER:$PROXY_PUERTO;
+
+iptables -A INPUT -i $INTERFACE -j ACCEPT;
+iptables -A OUTPUT -o $INTERFACE  -j ACCEPT;
+
+iptables -A INPUT -j LOG;
+iptables -A INPUT -j DROP;
+
+
+}
+
 getStrGTWAY(){
 	local RED IP
 	RED="$1"; IP="$2"; 
@@ -16,9 +68,8 @@ gateway $RED.$IP
 # «® ------------------ ®»
 
 "
-
-    # echo -n "$RED" "$ETH" "$IP" >&2
 }
+
 getStrRED(){
 	local ETH RED IP
 	ETH="$1"; RED="$2"; IP="$3"
@@ -35,8 +86,6 @@ network $RED.0
 # «® ------------------ ®»
 
 "
-
-    # echo -n "$RED" "$ETH" "$IP" >&2
 }
 
 cargaInterface () {
