@@ -3,50 +3,41 @@ clear
 
 # |||||||||||||||||||| VARIABLES ||||||||||||||||||||
 
-red_8="
 
-# «® RED 192.168.8.0 ®»
-
-allow-hotplug eth0
-iface eth0 inet static
-
-address 192.168.8.9
-netmask 255.255.255.0
-broadcast 192.168.8.255
-network 192.168.8.0
-
-gateway 192.168.8.86
-
-# «® ------------------ ®»
-";
-red_7="
-
-# «® RED 192.168.7.0 ®»
-
-allow-hotplug eth1
-iface eth1 inet static
-
-address 192.168.7.1
-netmask 255.255.255.0
-broadcast 192.168.7.255
-network 192.168.7.0
-
-# «® ------------------ ®»
-";
 
 # |||||||||||||||||||| FUNCIONES ||||||||||||||||||||
+getStrRED(){
+	local RED ETH IP
+	RED="$1"; ETH="$2"; IP="$3"
+    
+    echo  "
+# «® RED $RED ®»
+
+allow-hotplug eth$ETH
+iface eth$ETH inet static
+
+address $RED.$IP
+netmask 255.255.255.0
+broadcast $RED.255
+network $RED.0
+# «® ------------------ ®»
+"
+
+    # echo -n "$RED" "$ETH" "$IP" >&2
+}
 
 cargaInterface () {
-	cat >interfaces.conf << _INTERFACE
+
+	cat > interfaces.conf << _INTERFACE
 # «® ------------------ ®»
 
 source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
-
 # «® ------------------ ®»
 $red_8
 $red_7
+$red_9
 
 _INTERFACE
 
@@ -75,6 +66,10 @@ case $opt in
 1) # |||||||||||||||||||| OPCION 1 ||||||||||||||||||||
 clear;
 echo "";
+
+red_8=$(getStrRED '192.168.8' 0 9)
+red_7=$(getStrRED '192.168.7' 1 1)
+red_9=$(getStrRED '192.168.9' 1 5)
 
 cargaInterface
 
