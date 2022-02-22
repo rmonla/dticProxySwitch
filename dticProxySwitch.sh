@@ -7,7 +7,7 @@ CFG_NETWORK="_cfgFILEs/cfg_network.conf";
 CFG_IPTABLES="_cfgFILEs/cfg_iptable.conf";
 
 ######## «® FUNCIONES ®» ########
-verRECUERDOs(){
+# verRECUERDOs(){
 
 # PROXY_SERVER="192.168.7.1";
 # PROXY_PUERTO="3128";
@@ -19,7 +19,7 @@ verRECUERDOs(){
 
 # service networking restart;
 
-}
+# }
 
 getStrRED(){
 	local ETH RED IP
