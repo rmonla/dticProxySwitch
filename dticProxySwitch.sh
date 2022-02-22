@@ -248,6 +248,18 @@ salePor8_89(){
 	ejecutarRUTEOs
 }
 
+salePor8_87(){
+
+	cargaInterface "
+	$(getStrRED 0 '192.168.8'  9)
+	$(getStrRED 1 '192.168.7'  1)
+	$(getStrRED 2 '10.0.10' 1)
+	
+	$(getStrGTWAY '192.168.8' 87)
+	" 
+	ejecutarRUTEOs
+}
+
 
 ######## «® MENU ®» ########
 
@@ -255,8 +267,8 @@ while :
 do
 echo "«® ELEGIR EL TRONCAL DE INTERNET PARA EL PROXY ®»";
 echo "";
-echo "1. salePor8_89 IPT 30Mb A-sincrónico.";
-echo "2. WAN IPT 10Mb A-sincrónico.";
+echo "1. salePor8_89";
+echo "2. salePor8_87";
 echo "3. WAN TECO 60Mb Sincrónico.";
 echo "";
 echo "9. SALIR";
@@ -278,7 +290,7 @@ echo "";;
 2) ######## «® OPCION 2 ®» ########
 clear;
 
-salePor8_89
+salePor8_87
 
 echo "--- END OPCION 2 ---";
 echo "";;
