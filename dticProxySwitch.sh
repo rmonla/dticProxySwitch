@@ -57,6 +57,7 @@ aplicarCONFs(){
 
 	# APLICAR CONF NETWORK
 		cat > $CFG_NETWORK_DST < $CFG_NETWORK
+		service networking restart
 	
 	# APLICAR CONF IPTABLES
 		iptables-restore < $CFG_IPTABLES
