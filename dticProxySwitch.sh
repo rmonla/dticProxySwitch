@@ -2,9 +2,11 @@
 clear
 
 ######## «® VARIABLES ®» ########
+SCRIPT_DIR="$(dirname "$(readlink -e "$0")")"
+CFG_NETWORK="$SCRIPT_DIR/_cfgFILEs/cfg_network.conf";
+CFG_IPTABLES="$SCRIPT_DIR/_cfgFILEs/cfg_iptable.conf";
+
 CFG_NETWORK_DST="/etc/network/interfaces";
-CFG_NETWORK="_cfgFILEs/cfg_network.conf";
-CFG_IPTABLES="_cfgFILEs/cfg_iptable.conf";
 
 ######## «® FUNCIONES ®» ########
 # verRECUERDOs(){
@@ -54,10 +56,10 @@ gateway $GTWAY
 aplicarCONFs(){
 
 	# APLICAR CONF NETWORK
-		cat > $CFG_NETWORK_DST < "./$CFG_NETWORK"
+		cat > $CFG_NETWORK_DST < $CFG_NETWORK
 	
 	# APLICAR CONF IPTABLES
-		iptables-restore < "./$CFG_IPTABLES"
+		iptables-restore < $CFG_IPTABLES
 }
 
 
@@ -334,7 +336,8 @@ echo "";;
 4) ######## «® OPCION 4 ®» ########
 clear;
 
-echo $CFG_IPTABLES;
+cat $CFG_NETWORK;
+
 echo "Presiona una tecla para regresar...";
 read foo;
 

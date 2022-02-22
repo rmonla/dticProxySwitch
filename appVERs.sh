@@ -7,6 +7,7 @@ clear;
 
 $logVERs = " => 
 
+	v2.14 => APP: Agraga y carga la variable SCRIP_DIR.
 	v2.13 => FXs: Crea fx aplicarCONFs que aplica las configuraciones generadas.
 	v2.12 => FXs: Cambio nombres de fx cargarCFG_IPTABLES y cargarCFG_NETWORK por genrarCFG_XXXX.
 	v2.11 => FXs: Crea fx cargarCFG_IPTABLES que genera el archivo de configuración de iptables.
