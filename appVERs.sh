@@ -7,6 +7,10 @@ clear;
 
 $logVERs = " => 
 
+	v2.13 => FXs: Crea fx aplicarCONFs que aplica las configuraciones generadas.
+	v2.12 => FXs: Cambio nombres de fx cargarCFG_IPTABLES y cargarCFG_NETWORK por genrarCFG_XXXX.
+	v2.11 => FXs: Crea fx cargarCFG_IPTABLES que genera el archivo de configuración de iptables.
+	v2.10 => APP: Optimozo MENU y predetermino opción 9 SALIR.
 	v2.9 => APP: Corrige bug /etc/network/interfaces.
 	v2.8 => FXs: Agrego salePor8_87.
 	v2.7 => APP: Primer puesta en funcionameinto.
