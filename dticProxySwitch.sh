@@ -225,7 +225,7 @@ cargaInterface () {
 
 	# cat > interfaces.conf << _INTERFACE
 	
-	cat > /etc/network/interface << _INTERFACE
+	cat > /etc/network/interfaces << _INTERFACE
 ######## «® LOOPBACK ®» ########
 source /etc/network/interfaces.d/*
 auto lo
@@ -240,10 +240,10 @@ salePor8_89(){
 
 	cargaInterface "
 	$(getStrRED 0 '192.168.8'  9)
-	$(getStrGTWAY '192.168.8' 89)
-	
 	$(getStrRED 1 '192.168.7'  1)
 	$(getStrRED 2 '10.0.10' 1)
+
+	$(getStrGTWAY '192.168.8' 89)
 	
 	" 
 	ejecutarRUTEOs
@@ -253,11 +253,10 @@ salePor8_87(){
 
 	cargaInterface "
 	$(getStrRED 0 '192.168.8'  9)
-	$(getStrGTWAY '192.168.8' 87)
-
 	$(getStrRED 1 '192.168.7'  1)
 	$(getStrRED 2 '10.0.10' 1)
 	
+	$(getStrGTWAY '192.168.8' 87)
 	" 
 	ejecutarRUTEOs
 }
