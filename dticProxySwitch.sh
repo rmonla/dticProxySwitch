@@ -54,10 +54,10 @@ gateway $GTWAY
 aplicarCONFs(){
 
 	# APLICAR CONF NETWORK
-		cat > $CFG_NETWORK_DST < $CFG_NETWORK
+		cat > $CFG_NETWORK_DST < "./$CFG_NETWORK"
 	
 	# APLICAR CONF IPTABLES
-		iptables-restore < $CFG_IPTABLES
+		iptables-restore < "./$CFG_IPTABLES"
 }
 
 
