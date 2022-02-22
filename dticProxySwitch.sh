@@ -8,11 +8,17 @@ clear
 ######## «® FUNCIONES ®» ########
 ejecutarRUTEOs(){
 
-PROXY_SERVER="192.168.7.1";
+PROXY_SERVER="10.0.10.1";
 PROXY_PUERTO="3128";
 INTERFACE="eth0";
-RED_INTRANET="192.168.7.0/24";
+RED_INTRANET="10.0.10.0/24";
 RED_PUBLICA="192.168.8.0/24"
+
+# PROXY_SERVER="192.168.7.1";
+# PROXY_PUERTO="3128";
+# INTERFACE="eth0";
+# RED_INTRANET="192.168.7.0/24";
+# RED_PUBLICA="192.168.8.0/24"
 
 iptables -F;
 iptables -X;
@@ -55,19 +61,132 @@ iptables -A OUTPUT -o $INTERFACE  -j ACCEPT;
 iptables -A INPUT -j LOG;
 iptables -A INPUT -j DROP;
 
+# |||||||||||||||||||| Habilitacion de Accesos ||||||||||||||||||||
 
-}
+# (Red 7) Facebook
 
-getStrGTWAY(){
-	local RED IP
-	RED="$1"; IP="$2"; 
-    
-    echo  "
-######## «® GATEWAY ®» ########
-gateway $RED.$IP
-# «® ------------------ ®»
+iptables -I FORWARD -p tcp --dport 80 -m string --string 'facebook.com' --algo bm --to 65535 -j DROP;
+iptables -I FORWARD -p tcp --dport 443 -m string --string 'facebook.com' --algo bm --to 65535 -j DROP;
+#iptables -I FORWARD -p tcp --dport 80 -m string --string cienradios.com --algo bm --to 65535 -j DROP;
+#iptables -I FORWARD -p tcp --dport 443 -m string --string cienradios.com --algo bm --to 65535 -j DROP;
+#iptables -I FORWARD -p tcp --dport 80 -m string --string ar.cienradios.com --algo bm --to 65535 -j DROP;
+#iptables -I FORWARD -p tcp --dport 443 -m string --string ar.cienradios.com --algo bm --to 65535 -j DROP;
+iptables -I FORWARD -p tcp --dport 80 -m string --string 'youtube.com' --algo bm --to 65535 -j DROP;
+iptables -I FORWARD -p tcp --dport 443 -m string --string 'youtube.com' --algo bm --to 65535 -j DROP;
 
-"
+# ||||||||||||||||||| Habilitación de Accesos ||||||||||||||||||
+
+#UTNLaRioja-Dedicada
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.120 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.120 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#Biblioteca
+iptables -I FORWARD -p tcp --dport 443 -s  10.0.10.56 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables  -I FORWARD -p tcp --dport 443 -s 10.0.10.56 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#Araceli
+iptables -I FORWARD -p tcp --dport 443 -s  10.0.10.45 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#Henry
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.61 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.61 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#RRHH
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.43 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#Silvia
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.55 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.55 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#dcalderon
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.117 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.117 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#Colegio Eduardo
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.116 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.116 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#mlopez
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.78 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#rmonla
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.7 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.7 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.77 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.77 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.7 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#rmonlaMobile
+iptables -I FORWARD -p tcp --dport 443 -s 192.168.7.101 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#IleanaBandera
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.52 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.52 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#rcaniza
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.76 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.76 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#wkrupp
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.44 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.44 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#cgatica
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.68 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.68 -m string --string 'facebook.com' --algo bm --to 65535 -j ACCEPT;
+
+#vstewart
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.81 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#jpoli
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.103 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+#DSotomayor
+iptables -I FORWARD -p tcp --dport 443 -s 10.0.10.41 -m string --string 'youtube.com' --algo bm --to 65535 -j ACCEPT;
+
+
+
+# |||||||||||||||||||| Negación de Accesos ||||||||||||||||||||
+
+# (Red 8) Facebook
+
+iptables -A FORWARD -i eth1 -s 192.168.8.0/24 -m string --algo bm --string "facebook.com" -j REJECT;
+iptables -A FORWARD -i eth1 -d 192.168.8.0/24 -m string --algo bm --string "facebook.com" -j REJECT;
+
+# (Red 10) Facebook
+
+iptables -A FORWARD -i eth1 -s 192.168.10.0/24 -m string --algo bm --string "facebook.com" -j REJECT;
+iptables -A FORWARD -i eth1 -d 192.168.10.0/24 -m string --algo bm --string "facebook.com" -j REJECT;
+
+# |||||||||||||||||||| Aislamiento de Redes ||||||||||||||||||||
+
+# (Red 7)
+
+iptables -I FORWARD -s 192.168.7.0/24 -d 192.168.8.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.7.0/24 -d 192.168.9.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.7.0/24 -d 192.168.10.0/24 -j DROP;
+
+# (Red 8)
+
+iptables -I FORWARD -s 192.168.8.0/24 -d 192.168.7.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.8.0/24 -d 192.168.9.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.8.0/24 -d 192.168.10.0/24 -j DROP;
+
+# (Red 9)
+
+iptables -I FORWARD -s 192.168.9.0/24 -d 192.168.7.0/24 -j ACCEPT;
+iptables -I FORWARD -s 192.168.9.0/24 -d 192.168.8.0/24 -j ACCEPT;
+iptables -I FORWARD -s 192.168.9.0/24 -d 192.168.10.0/24 -j ACCEPT;
+
+# (Red 10)
+
+iptables -I FORWARD -s 192.168.10.0/24 -d 192.168.7.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.10.0/24 -d 192.168.8.0/24 -j DROP;
+iptables -I FORWARD -s 192.168.10.0/24 -d 192.168.10.0/24 -j DROP;
+
+service networking restart;
+
 }
 
 getStrRED(){
@@ -88,11 +207,25 @@ network $RED.0
 "
 }
 
+getStrGTWAY(){
+	local RED IP
+	RED="$1"; IP="$2"; 
+    
+    echo  "
+######## «® GATEWAY ®» ########
+gateway $RED.$IP
+# «® ------------------ ®»
+
+"
+}
+
 cargaInterface () {
 	local BODY
 	BODY="$1";
 
-	cat > interfaces.conf << _INTERFACE
+	# cat > interfaces.conf << _INTERFACE
+	
+	cat > /etc/network/interface << _INTERFACE
 ######## «® LOOPBACK ®» ########
 source /etc/network/interfaces.d/*
 auto lo
@@ -103,6 +236,17 @@ _INTERFACE
 
 }
 
+salePor8_89(){
+
+	cargaInterface "
+	$(getStrRED 0 '192.168.8'  9)
+	$(getStrRED 1 '192.168.7'  1)
+	$(getStrRED 2 '10.0.10' 1)
+	
+	$(getStrGTWAY '192.168.8' 89)
+	" 
+	ejecutarRUTEOs
+}
 
 
 ######## «® MENU ®» ########
@@ -111,11 +255,11 @@ while :
 do
 echo "«® ELEGIR EL TRONCAL DE INTERNET PARA EL PROXY ®»";
 echo "";
-echo "1. WAN IPT 30Mb A-sincrónico.";
+echo "1. salePor8_89 IPT 30Mb A-sincrónico.";
 echo "2. WAN IPT 10Mb A-sincrónico.";
 echo "3. WAN TECO 60Mb Sincrónico.";
 echo "";
-echo "4. SALIR";
+echo "9. SALIR";
 echo -n "SELECCIONE UNA OPCIÓN [1 - 4] : ";
 echo "";
 echo "";
@@ -126,12 +270,7 @@ case $opt in
 1) ######## «® OPCION 1 ®» ########
 clear;
 
-cargaInterface "
-$(getStrRED 0 '192.168.8'  9)
-$(getStrGTWAY '192.168.8' 86)
-$(getStrRED 1 '192.168.7'  1)
-$(getStrRED 2 '192.168.20' 1)
-" 
+salePor8_89
 
 echo "--- END OPCION 1 ---";
 echo "";;
@@ -139,12 +278,7 @@ echo "";;
 2) ######## «® OPCION 2 ®» ########
 clear;
 
-cargaInterface " 
-$(getStrRED 0 '192.168.11' 4)
-$(getStrGTWAY '192.168.11' 1)
-$(getStrRED 1 '192.168.7'  1)
-$(getStrRED 2 '192.168.20' 1)
-" 
+salePor8_89
 
 echo "--- END OPCION 2 ---";
 echo "";;
@@ -152,22 +286,17 @@ echo "";;
 3) ######## «® OPCION 3 ®» ########
 clear;
 
-cargaInterface " 
-$(getStrRED 0 '190.114.205' 30)
-$(getStrGTWAY '190.114.205' 1)
-$(getStrRED 1 '192.168.7'  1)
-$(getStrRED 2 '192.168.20' 1)
-" 
+salePor8_89
 
 echo "--- END OPCION 3 ---";
 echo "";;
 
-4) ######## «® OPCION 4 ®» ########
+9) ######## «® OPCION 4 ®» ########
 clear;
 
 
 
-echo "--- END OPCION 4 ---";
+echo "--- END OPCION 9 ---";
 echo "";
 echo "";
 exit 1;;

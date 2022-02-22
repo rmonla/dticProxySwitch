@@ -1,0 +1,29 @@
+source /etc/network/interfaces.d/*
+auto lo
+iface lo inet loopback
+#|||||||||||||||||||
+#Red IPT
+allow-hotplug eth0
+iface eth0 inet static
+address 192.168.8.9
+netmask 255.255.255.0
+broadcast 192.168.8.255
+network 192.168.8.0
+gateway 192.168.8.89
+#|||||||||||||||||||
+#Red 7
+allow-hotplug eth1
+iface eth1 inet static
+address 192.168.7.1
+netmask 255.255.255.0
+broadcast 192.168.7.255
+network 192.168.7.0
+#|||||||||||||||||||
+#Red 10
+allow-hotplug eth2
+iface eth2 inet static
+address 10.0.10.1
+netmask 255.255.255.0
+broadcast 10.0.10.255
+network 10.0.10.0
+#|||||||||||||||||||
