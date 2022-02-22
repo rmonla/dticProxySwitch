@@ -336,8 +336,9 @@ echo "";;
 4) ######## «® OPCION 4 ®» ########
 clear;
 
-cat $CFG_NETWORK;
+traceroute 170.210.152.1 -m 3;
 
+echo "";
 echo "Presiona una tecla para regresar...";
 read foo;
 
