@@ -2,9 +2,10 @@
 clear
 
 ######## «® VARIABLES ®» ########
-SCRIPT_DIR="$(dirname "$(readlink -e "$0")")"
-CFG_NETWORK="$SCRIPT_DIR/_cfgFILEs/cfg_network.conf";
-CFG_IPTABLES="$SCRIPT_DIR/_cfgFILEs/cfg_iptable.conf";
+DIR_HOME="$(dirname "$(readlink -e "$0")")";
+DIR_CFG="$DIR_HOME/_cfgFILEs/";
+CFG_NETWORK="$DIR_CFG""cfg_network.conf";
+CFG_IPTABLES="$DIR_CFG""cfg_iptable.conf";
 
 CFG_NETWORK_DST="/etc/network/interfaces";
 
